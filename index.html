@@ -45,31 +45,54 @@
       <h2>Now</h2>
       <p class="section-sub">What I'm reading, listening to, and thinking about.</p>
 
-      <!-- Add, remove, or reorder entries freely. Tags: reading, listening, thinking, watching -->
+      <!--
+        HOW TO ADD AN ENTRY:
+        Copy one block below and fill in:
+          - tag class: tag-reading / tag-listening / tag-thinking / tag-watching
+          - href on the <a class="now-thumb">: link to book/album/article/etc.
+          - img src: URL of a cover image (book cover, album art, article thumbnail)
+          - h3 text: title
+          - p text: your note
+        For entries with no image, delete the <a class="now-thumb">...</a> line entirely.
+      -->
       <div class="now-feed">
 
         <article class="now-entry">
-          <span class="tag tag-reading">reading</span>
-          <h3>The Silk Roads &mdash; Peter Frankopan</h3>
-          <p>A genuinely different lens on world history, centered on Central Asia and the connective tissue between civilizations. The kind of book that makes you feel like you've been reading everything in the wrong order.</p>
+          <a class="now-thumb" href="https://www.goodreads.com/book/show/25812847-the-silk-roads" target="_blank" rel="noopener">
+            <img src="https://covers.openlibrary.org/b/isbn/9781101946329-M.jpg" alt="The Silk Roads cover">
+          </a>
+          <div class="now-body">
+            <span class="tag tag-reading">reading</span>
+            <h3><a href="https://www.goodreads.com/book/show/25812847-the-silk-roads" target="_blank" rel="noopener">The Silk Roads &mdash; Peter Frankopan</a></h3>
+            <p>A genuinely different lens on world history, centered on Central Asia and the connective tissue between civilizations. The kind of book that makes you feel like you've been reading everything in the wrong order.</p>
+          </div>
         </article>
 
         <article class="now-entry">
-          <span class="tag tag-thinking">thinking</span>
-          <h3>What I actually believe about carbon markets</h3>
-          <p>A month of reading arguments from every direction has left me with a complicated answer. The case for them is real. So is the case against. Trying to figure out where I land.</p>
+          <a class="now-thumb" href="https://en.wikipedia.org/wiki/Five_Leaves_Left" target="_blank" rel="noopener">
+            <img src="https://upload.wikimedia.org/wikipedia/en/d/d8/Nick_Drake_-_Five_Leaves_Left.png" alt="Five Leaves Left cover">
+          </a>
+          <div class="now-body">
+            <span class="tag tag-listening">listening</span>
+            <h3><a href="https://open.spotify.com/album/5Dbax7G8SWrP9xyzkOvy2F" target="_blank" rel="noopener">Nick Drake, Five Leaves Left</a></h3>
+            <p>I come back to this record every year. The fingerpicking is impossibly delicate. Trying to steal some ideas for my own playing, mostly failing, entirely fine with it.</p>
+          </div>
         </article>
 
         <article class="now-entry">
-          <span class="tag tag-listening">listening</span>
-          <h3>Nick Drake, Five Leaves Left</h3>
-          <p>I come back to this record every year. The fingerpicking is impossibly delicate. Trying to steal some ideas for my own playing, mostly failing, entirely fine with it.</p>
+          <div class="now-body">
+            <span class="tag tag-thinking">thinking</span>
+            <h3>What I actually believe about carbon markets</h3>
+            <p>A month of reading arguments from every direction has left me with a complicated answer. The case for them is real. So is the case against. Trying to figure out where I land.</p>
+          </div>
         </article>
 
         <article class="now-entry">
-          <span class="tag tag-thinking">thinking</span>
-          <h3>Overworld vs. sandbox in D&D campaign design</h3>
-          <p>Running a homebrew campaign and wrestling with how much to pre-plan versus leaving room for player-driven chaos. The answer is probably "more chaos than feels comfortable."</p>
+          <div class="now-body">
+            <span class="tag tag-thinking">thinking</span>
+            <h3>Overworld vs. sandbox in D&D campaign design</h3>
+            <p>Running a homebrew campaign and wrestling with how much to pre-plan versus leaving room for player-driven chaos. The answer is probably "more chaos than feels comfortable."</p>
+          </div>
         </article>
 
       </div>
