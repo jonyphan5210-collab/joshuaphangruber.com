@@ -300,50 +300,31 @@ img { max-width: 100%; display: block; }
 
 
 /* ============================================================
-   INSTAGRAM PLACEHOLDER
+   PHOTO GRID
    ============================================================ */
-.instagram-placeholder {
-  border: 2px dashed var(--border);
-  border-radius: 10px;
-  background: var(--bg);
+.photo-grid {
+  columns: 3;
+  column-gap: 0.75rem;
 }
 
-.instagram-placeholder-inner {
-  padding: 3.5rem 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-  text-align: center;
-  color: var(--text-muted);
+.photo-grid img {
+  width: 100%;
+  display: block;
+  margin-bottom: 0.75rem;
+  border-radius: 4px;
+  transition: opacity 0.2s;
 }
 
-.instagram-placeholder-inner svg {
-  opacity: 0.45;
+.photo-grid img:hover {
+  opacity: 0.88;
 }
 
-.instagram-placeholder-inner p {
-  margin: 0;
-  font-size: 0.95rem;
+@media (max-width: 700px) {
+  .photo-grid { columns: 2; }
 }
 
-.btn-outline {
-  display: inline-block;
-  margin-top: 0.25rem;
-  padding: 0.45em 1.1em;
-  border: 1.5px solid var(--green);
-  border-radius: 5px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--green);
-  text-decoration: none;
-  transition: background 0.15s, color 0.15s;
-}
-
-.btn-outline:hover {
-  background: var(--green);
-  color: #fff;
-  text-decoration: none;
+@media (max-width: 420px) {
+  .photo-grid { columns: 1; }
 }
 
 
