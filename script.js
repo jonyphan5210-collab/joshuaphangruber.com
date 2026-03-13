@@ -1,4 +1,4 @@
-// ── Active nav on scroll ──────────────────────────────────────
+// ── Active nav on scroll ─────────────────────────────────────
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 
@@ -14,6 +14,64 @@ const observer = new IntersectionObserver((entries) => {
 }, { rootMargin: '-20% 0px -60% 0px' });
 
 sections.forEach(s => observer.observe(s));
+
+
+// ── Now feed ─────────────────────────────────────────────────
+async function loadNow() {
+  const feed = document.getElementById('now-feed');
+  if (!feed) return;
+  try {
+    const res = await fetch('/data/now.json?v=' + Date.now());
+    const entries = await res.json();
+    if (!entries.length) {
+      feed.innerHTML = '<p class="empty-note">Nothing here yet. Check back soon.</p>';
+      return;
+    }
+    feed.innerHTML = entries.map(e => {
+      const thumb = e.thumb ? `
+        <a class="now-thumb" ${e.url ? `href="${e.url}"` : ''} target="_blank" rel="noopener">
+          <img src="${e.thumb}" alt="${e.title} cover" loading="lazy">
+        </a>` : '';
+      const titleHtml = e.url
+        ? `<a href="${e.url}" target="_blank" rel="noopener">${e.title}</a>`
+        : e.title;
+      return `
+        <article class="now-entry">
+          ${thumb}
+          <div class="now-body">
+            <span class="tag tag-${e.tag}">${e.tag}</span>
+            <h3>${titleHtml}</h3>
+            <p>${e.body}</p>
+          </div>
+        </article>`;
+    }).join('');
+  } catch (err) {
+    feed.innerHTML = '<p class="empty-note">Could not load entries.</p>';
+  }
+}
+
+
+// ── Writing list ─────────────────────────────────────────────
+async function loadWriting() {
+  const list = document.getElementById('writing-list');
+  if (!list) return;
+  try {
+    const res = await fetch('/data/writing.json?v=' + Date.now());
+    const posts = await res.json();
+    if (!posts.length) {
+      list.innerHTML = '<p class="empty-note">Nothing here yet. Check back soon.</p>';
+      return;
+    }
+    list.innerHTML = posts.map(p => `
+      <article class="writing-entry">
+        <span class="writing-date">${p.date}</span>
+        <h3><a href="/writing/post.html?slug=${p.slug}">${p.title}</a></h3>
+        <p>${p.description}</p>
+      </article>`).join('');
+  } catch (err) {
+    list.innerHTML = '<p class="empty-note">Could not load posts.</p>';
+  }
+}
 
 
 // ── Photo carousel ────────────────────────────────────────────
@@ -40,7 +98,6 @@ const ALL_PHOTOS = [
 
 const SHOW = 6;
 
-// Fisher-Yates shuffle, pick first N
 function pickRandom(arr, n) {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -50,36 +107,40 @@ function pickRandom(arr, n) {
   return a.slice(0, n);
 }
 
-const chosen = pickRandom(ALL_PHOTOS, SHOW);
 const track  = document.getElementById('carousel-track');
 const dotsEl = document.getElementById('carousel-dots');
 
-chosen.forEach(file => {
-  const img = document.createElement('img');
-  img.src = `photos/${file}`;
-  img.alt = '';
-  track.appendChild(img);
-});
+if (track) {
+  const chosen = pickRandom(ALL_PHOTOS, SHOW);
+  chosen.forEach(file => {
+    const img = document.createElement('img');
+    img.src = `photos/${file}`;
+    img.alt = '';
+    track.appendChild(img);
+  });
 
-const dots = chosen.map((_, i) => {
-  const btn = document.createElement('button');
-  btn.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-  btn.setAttribute('aria-label', `Photo ${i + 1}`);
-  btn.addEventListener('click', () => goTo(i));
-  dotsEl.appendChild(btn);
-  return btn;
-});
+  const dots = chosen.map((_, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    btn.setAttribute('aria-label', `Photo ${i + 1}`);
+    btn.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(btn);
+    return btn;
+  });
 
-let current = 0;
+  let current = 0;
 
-function goTo(n) {
-  current = (n + chosen.length) % chosen.length;
-  track.style.transform = `translateX(-${current * 100}%)`;
-  dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  function goTo(n) {
+    current = (n + chosen.length) % chosen.length;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  document.querySelector('.carousel-prev').addEventListener('click', () => goTo(current - 1));
+  document.querySelector('.carousel-next').addEventListener('click', () => goTo(current + 1));
+  setInterval(() => goTo(current + 1), 5000);
 }
 
-document.querySelector('.carousel-prev').addEventListener('click', () => goTo(current - 1));
-document.querySelector('.carousel-next').addEventListener('click', () => goTo(current + 1));
-
-// Auto-advance every 5 seconds
-setInterval(() => goTo(current + 1), 5000);
+// ── Init ─────────────────────────────────────────────────────
+loadNow();
+loadWriting();

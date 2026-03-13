@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <!-- LOGIN SCREEN -->
+  <div id="screen-login" class="screen">
+    <div class="login-box">
+      <h1>JPG Admin</h1>
+      <form id="login-form">
+        <label for="password">Password</label>
+        <input type="password" id="password" autocomplete="current-password" autofocus>
+        <button type="submit">Sign in</button>
+        <p class="login-error" id="login-error"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOKEN SCREEN -->
+  <div id="screen-token" class="screen hidden">
+    <div class="login-box">
+      <h1>GitHub Token</h1>
+      <p class="token-note">Enter your GitHub Personal Access Token to enable saving. This is stored only in your browser.</p>
+      <form id="token-form">
+        <label for="gh-token">Personal Access Token</label>
+        <input type="password" id="gh-token" placeholder="ghp_...">
+        <button type="submit">Save &amp; Continue</button>
+        <p class="login-error" id="token-error"></p>
+      </form>
+      <p class="token-hint">
+        Generate one at <strong>github.com &rarr; Settings &rarr; Developer settings &rarr; Personal access tokens &rarr; Tokens (classic)</strong>.
+        Needs <strong>repo</strong> scope.
+      </p>
+    </div>
+  </div>
+
+  <!-- ADMIN SCREEN -->
+  <div id="screen-admin" class="screen hidden">
+
+    <header class="admin-nav">
+      <span class="admin-nav-title">JPG Admin</span>
+      <div class="admin-nav-actions">
+        <a href="/" target="_blank">View site &rarr;</a>
+        <button id="btn-logout" class="btn-ghost">Sign out</button>
+      </div>
+    </header>
+
+    <div class="admin-body">
+
+      <!-- NOW SECTION -->
+      <section class="admin-section">
+        <div class="admin-section-head">
+          <h2>Now</h2>
+          <button class="btn-primary" id="btn-add-now">+ Add entry</button>
+        </div>
+
+        <div id="now-list" class="entry-list"></div>
+
+        <!-- NOW FORM (hidden until add/edit) -->
+        <div id="now-form-wrap" class="form-wrap hidden">
+          <h3 id="now-form-title">New entry</h3>
+          <input type="hidden" id="now-edit-id">
+          <div class="form-row">
+            <label>Tag</label>
+            <select id="now-tag">
+              <option value="reading">reading</option>
+              <option value="listening">listening</option>
+              <option value="thinking">thinking</option>
+              <option value="watching">watching</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>Title</label>
+            <input type="text" id="now-title" placeholder="Book title, album name, topic...">
+          </div>
+          <div class="form-row">
+            <label>Link <span class="label-optional">(optional)</span></label>
+            <input type="url" id="now-url" placeholder="https://...">
+          </div>
+          <div class="form-row">
+            <label>Cover image URL <span class="label-optional">(optional)</span></label>
+            <input type="url" id="now-thumb" placeholder="https://... (right-click any image &rarr; Copy Image Address)">
+            <div id="now-thumb-preview" class="thumb-preview"></div>
+          </div>
+          <div class="form-row">
+            <label>Note</label>
+            <textarea id="now-body" rows="4" placeholder="Your note about this..."></textarea>
+          </div>
+          <div class="form-actions">
+            <button class="btn-primary" id="btn-now-save">Save entry</button>
+            <button class="btn-ghost" id="btn-now-cancel">Cancel</button>
+          </div>
+          <p class="form-status" id="now-status"></p>
+        </div>
+      </section>
+
+      <!-- WRITING SECTION -->
+      <section class="admin-section">
+        <div class="admin-section-head">
+          <h2>Writing</h2>
+          <button class="btn-primary" id="btn-add-post">+ New post</button>
+        </div>
+
+        <div id="writing-list" class="entry-list"></div>
+
+        <!-- WRITING FORM -->
+        <div id="writing-form-wrap" class="form-wrap hidden">
+          <h3 id="writing-form-title">New post</h3>
+          <input type="hidden" id="writing-edit-slug">
+          <div class="form-row">
+            <label>Title</label>
+            <input type="text" id="writing-title" placeholder="Post title">
+          </div>
+          <div class="form-row">
+            <label>Date</label>
+            <input type="text" id="writing-date" placeholder="March 2026">
+          </div>
+          <div class="form-row">
+            <label>Description <span class="label-optional">(shown on homepage)</span></label>
+            <input type="text" id="writing-desc" placeholder="One or two sentences about the post.">
+          </div>
+          <div class="form-row">
+            <label>Body <span class="label-optional">One paragraph per line. Blank line = new paragraph.</span></label>
+            <textarea id="writing-body" rows="18" placeholder="Write your post here. Separate paragraphs with a blank line.&#10;&#10;Like this."></textarea>
+          </div>
+          <div class="form-actions">
+            <button class="btn-primary" id="btn-writing-save">Save post</button>
+            <button class="btn-ghost" id="btn-writing-cancel">Cancel</button>
+          </div>
+          <p class="form-status" id="writing-status"></p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

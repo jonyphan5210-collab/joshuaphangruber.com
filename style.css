@@ -454,6 +454,18 @@ img { max-width: 100%; display: block; }
   margin-bottom: 0;
 }
 
+.admin-link {
+  color: rgba(250, 247, 242, 0.15);
+  font-size: 0.5rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.admin-link:hover {
+  color: rgba(250, 247, 242, 0.5);
+  text-decoration: none;
+}
+
 
 /* ============================================================
    RESPONSIVE

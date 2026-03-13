@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Josh Phan-Gruber</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="post.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-name">Josh Phan-Gruber</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#now">Now</a></li>
+        <li><a href="../index.html#writing">Writing</a></li>
+        <li><a href="../index.html#music">Music</a></li>
+        <li><a href="../index.html#reading">Reading</a></li>
+        <li><a href="../index.html#photos">Photos</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="post-wrap">
+    <article class="post" id="post-content">
+      <header class="post-header">
+        <a href="../index.html#writing" class="post-back">&larr; Writing</a>
+        <h1 id="post-title">Loading...</h1>
+        <p class="post-meta" id="post-date"></p>
+      </header>
+      <div class="post-body" id="post-body"></div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/joshua-phan-gruber/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="1.75"/>
+          </svg>
+        </a>
+        <a href="https://instagram.com/jphangruber" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Josh Phan-Gruber</p>
+    </div>
+  </footer>
+
+  <script>
+    async function loadPost() {
+      const slug = new URLSearchParams(window.location.search).get('slug');
+      if (!slug) { document.getElementById('post-title').textContent = 'Post not found.'; return; }
+      try {
+        const res = await fetch('/data/writing.json?v=' + Date.now());
+        const posts = await res.json();
+        const post = posts.find(p => p.slug === slug);
+        if (!post) { document.getElementById('post-title').textContent = 'Post not found.'; return; }
+        document.title = post.title + ' — Josh Phan-Gruber';
+        document.getElementById('post-title').textContent = post.title;
+        document.getElementById('post-date').textContent = post.date;
+        document.getElementById('post-body').innerHTML = post.body;
+      } catch (e) {
+        document.getElementById('post-title').textContent = 'Could not load post.';
+      }
+    }
+    loadPost();
+  </script>
+
+</body>
+</html>

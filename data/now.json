@@ -1,0 +1,34 @@
+[
+  {
+    "id": "silk-roads",
+    "tag": "reading",
+    "title": "The Silk Roads — Peter Frankopan",
+    "url": "https://www.goodreads.com/book/show/25812847-the-silk-roads",
+    "thumb": "https://covers.openlibrary.org/b/isbn/9781101946329-M.jpg",
+    "body": "A genuinely different lens on world history, centered on Central Asia and the connective tissue between civilizations. The kind of book that makes you feel like you've been reading everything in the wrong order."
+  },
+  {
+    "id": "five-leaves-left",
+    "tag": "listening",
+    "title": "Nick Drake, Five Leaves Left",
+    "url": "https://open.spotify.com/album/5Dbax7G8SWrP9xyzkOvy2F",
+    "thumb": "https://covers.openlibrary.org/b/id/8739161-M.jpg",
+    "body": "I come back to this record every year. The fingerpicking is impossibly delicate. Trying to steal some ideas for my own playing, mostly failing, entirely fine with it."
+  },
+  {
+    "id": "carbon-markets",
+    "tag": "thinking",
+    "title": "What I actually believe about carbon markets",
+    "url": "",
+    "thumb": "",
+    "body": "A month of reading arguments from every direction has left me with a complicated answer. The case for them is real. So is the case against. Trying to figure out where I land."
+  },
+  {
+    "id": "dnd-campaign",
+    "tag": "thinking",
+    "title": "Overworld vs. sandbox in D&D campaign design",
+    "url": "",
+    "thumb": "",
+    "body": "Running a homebrew campaign and wrestling with how much to pre-plan versus leaving room for player-driven chaos. The answer is probably \"more chaos than feels comfortable.\""
+  }
+]

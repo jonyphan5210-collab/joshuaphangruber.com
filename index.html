@@ -29,7 +29,6 @@
   <section class="hero" id="top">
     <div class="hero-inner">
       <div class="hero-photo">
-        <!-- Replace headshot.jpg with your actual photo file -->
         <img src="headshot.jpg" alt="Josh Phan-Gruber" class="headshot">
       </div>
       <div class="hero-text">
@@ -44,57 +43,8 @@
     <div class="container">
       <h2>Now</h2>
       <p class="section-sub">What I'm reading, listening to, and thinking about.</p>
-
-      <!--
-        HOW TO ADD AN ENTRY:
-        Copy one block below and fill in:
-          - tag class: tag-reading / tag-listening / tag-thinking / tag-watching
-          - href on the <a class="now-thumb">: link to book/album/article/etc.
-          - img src: URL of a cover image (book cover, album art, article thumbnail)
-          - h3 text: title
-          - p text: your note
-        For entries with no image, delete the <a class="now-thumb">...</a> line entirely.
-      -->
-      <div class="now-feed">
-
-        <article class="now-entry">
-          <a class="now-thumb" href="https://www.goodreads.com/book/show/25812847-the-silk-roads" target="_blank" rel="noopener">
-            <img src="https://covers.openlibrary.org/b/isbn/9781101946329-M.jpg" alt="The Silk Roads cover">
-          </a>
-          <div class="now-body">
-            <span class="tag tag-reading">reading</span>
-            <h3><a href="https://www.goodreads.com/book/show/25812847-the-silk-roads" target="_blank" rel="noopener">The Silk Roads &mdash; Peter Frankopan</a></h3>
-            <p>A genuinely different lens on world history, centered on Central Asia and the connective tissue between civilizations. The kind of book that makes you feel like you've been reading everything in the wrong order.</p>
-          </div>
-        </article>
-
-        <article class="now-entry">
-          <a class="now-thumb" href="https://en.wikipedia.org/wiki/Five_Leaves_Left" target="_blank" rel="noopener">
-            <img src="https://covers.openlibrary.org/b/id/8739161-M.jpg" alt="Five Leaves Left cover">
-          </a>
-          <div class="now-body">
-            <span class="tag tag-listening">listening</span>
-            <h3><a href="https://open.spotify.com/album/5Dbax7G8SWrP9xyzkOvy2F" target="_blank" rel="noopener">Nick Drake, Five Leaves Left</a></h3>
-            <p>I come back to this record every year. The fingerpicking is impossibly delicate. Trying to steal some ideas for my own playing, mostly failing, entirely fine with it.</p>
-          </div>
-        </article>
-
-        <article class="now-entry">
-          <div class="now-body">
-            <span class="tag tag-thinking">thinking</span>
-            <h3>What I actually believe about carbon markets</h3>
-            <p>A month of reading arguments from every direction has left me with a complicated answer. The case for them is real. So is the case against. Trying to figure out where I land.</p>
-          </div>
-        </article>
-
-        <article class="now-entry">
-          <div class="now-body">
-            <span class="tag tag-thinking">thinking</span>
-            <h3>Overworld vs. sandbox in D&D campaign design</h3>
-            <p>Running a homebrew campaign and wrestling with how much to pre-plan versus leaving room for player-driven chaos. The answer is probably "more chaos than feels comfortable."</p>
-          </div>
-        </article>
-
+      <div class="now-feed" id="now-feed">
+        <!-- populated by script.js -->
       </div>
     </div>
   </section>
@@ -104,12 +54,9 @@
     <div class="container">
       <h2>Writing</h2>
       <p class="section-sub">Essays, notes, and longer-form thinking.</p>
-
-      <article class="writing-entry">
-        <span class="writing-date">March 2026</span>
-        <h3><a href="writing/what-actors-know.html">What actors know that most people don't</a></h3>
-        <p>A decade on stage teaches you some strange things about listening, failure, and why rehearsal is nothing like the real thing.</p>
-      </article>
+      <div id="writing-list">
+        <!-- populated by script.js -->
+      </div>
     </div>
   </section>
 
@@ -140,11 +87,6 @@
         <a href="https://www.goodreads.com/user/show/93616502-joshua" target="_blank" rel="noopener">Goodreads</a>.
       </p>
       <div class="goodreads-wrap">
-        <!--
-          Goodreads widget: generated from goodreads.com/user/widget
-          The widget injects its own HTML/styles; colors won't perfectly match the site.
-          For a closer match, consider a custom API integration later.
-        -->
         <script src="https://www.goodreads.com/review/custom_widget/93616502.Josh%27s%20bookshelf%3A%20currently-reading?cover_position=left&cover_size=medium&num_books=5&order=d&shelf=currently-reading&show_author=1&show_cover=1&show_rating=0&show_review=1&show_tags=0&show_title=1&sort=date_added&widget_bg_color=faf7f2&widget_bg_transparent=true&widget_border_width=none&widget_text_color=2c2416&widget_title_size=medium&widget_width=full" type="text/javascript" charset="utf-8"></script>
         <noscript>
           <p class="empty-note">
@@ -177,21 +119,24 @@
     <div class="container footer-inner">
       <div class="footer-links">
         <a href="https://www.linkedin.com/in/joshua-phan-gruber/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
             <rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
             <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="1.75"/>
           </svg>
         </a>
         <a href="https://instagram.com/jphangruber" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </a>
       </div>
-      <p class="footer-copy">&copy; 2026 Josh Phan-Gruber</p>
+      <p class="footer-copy">
+        &copy; 2026 Josh Phan-Gruber &nbsp;&middot;&nbsp;
+        <a href="/admin/" class="admin-link">&#9679;</a>
+      </p>
     </div>
   </footer>
 
