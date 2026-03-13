@@ -2,7 +2,7 @@
 const REPO    = 'jonyphan5210-collab/joshuaphangruber.com';
 const BRANCH  = 'main';
 // SHA-256 of "JoshJPG2026!" -- change password by updating this hash
-const PW_HASH = '03ac0f5d7f1a93c866bb13ace0bbad8582ec937ccc1284210041a5404b281c43';
+const PW_HASH = '9fd7c42b96b9426762634fa77655180f8fe20e2472b48e8380d6da850b9bf458';
 
 
 // ── State ────────────────────────────────────────────────────
